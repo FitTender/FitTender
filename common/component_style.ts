@@ -25,7 +25,7 @@ const fontBasic = {
 
 /**************** Global Style ******************/
 
-export const GlobalStyles = StyleSheet.create({
+ const GlobalStyles = StyleSheet.create({
     ButtonNormal: {
         ...ButtonBasic,
         backgroundColor: '#000000',
@@ -141,3 +141,4 @@ export const GlobalStyles = StyleSheet.create({
 })
 
 
+export default GlobalStyles

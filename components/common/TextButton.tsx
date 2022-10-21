@@ -3,7 +3,7 @@ import { TouchableOpacityProps, TextProps, GestureResponderEvent, TouchableOpaci
 
 interface TextButtonProps extends TouchableOpacityProps {
     title: string;
-    textStyle: StyleProp<TextProps>
+    textStyle?: StyleProp<TextProps>
 }
 
 const TextButton = ({onPress, title,textStyle, ...props}: TextButtonProps) => {
