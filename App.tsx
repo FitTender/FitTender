@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, {type PropsWithChildren} from 'react';
+import * as React from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -26,12 +26,10 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import TextButton from './src/components/common/TextButton';
+import './App.css';
 
-const Section: React.FC<
-  PropsWithChildren<{
-    title: string;
-  }>
-> = ({children, title}) => {
+const Section= ({children, title}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -74,6 +72,8 @@ const App = () => {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
+
+        <TextButton title={'hello'}/>
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
@@ -88,7 +88,8 @@ const App = () => {
           <Section title="Debug">
             <DebugInstructions />
           </Section>
-          <Section title="Learn More">
+          <Section  title="Learn More">
+            
             Read the docs to discover what to do next:
           </Section>
           <LearnMoreLinks />

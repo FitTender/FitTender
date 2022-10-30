@@ -1,14 +1,16 @@
-import React, { useCallback } from 'react';
+import * as React from 'react';
+import { useCallback } from 'react';
 import { TouchableOpacityProps, TextProps, GestureResponderEvent, TouchableOpacity, Text, StyleProp } from 'react-native';
+import btnStyle from './TextButton.module.scss';
 
 interface TextButtonProps extends TouchableOpacityProps {
     title: string;
-    textStyle: StyleProp<TextProps>
+    textStyle?: StyleProp<TextProps>
 }
 
 const TextButton = ({onPress, title,textStyle, ...props}: TextButtonProps) => {
 
-    const _onPress = useCallback((event: GestureResponderEvent) => {
+    const _onPress = useCallback((event) => {
         if (onPress) {
             onPress(event);
         }
@@ -16,10 +18,10 @@ const TextButton = ({onPress, title,textStyle, ...props}: TextButtonProps) => {
 
     return (
         <TouchableOpacity onPress={_onPress} {...props}>
-        <Text style={textStyle}>
+        <Text className={btnStyle.text}>
           {title}
         </Text>
-      </TouchableOpacity>
+     </TouchableOpacity>
     )
 
 };
