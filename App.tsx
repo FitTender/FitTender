@@ -26,8 +26,9 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import TextButton from './src/components/common/TextButton';
 import './App.css';
+import BackTitle from './src/components/common/BackTitle/BackTitle';
+import TextButton from './src/components/common/TextButton/TextButton';
 
 const Section= ({children, title}) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -74,26 +75,8 @@ const App = () => {
         <Header />
 
         <TextButton title={'hello'}/>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Fit Tender">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section  title="Learn More">
-            
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
+        <BackTitle />
+       
       </ScrollView>
     </SafeAreaView>
   );
