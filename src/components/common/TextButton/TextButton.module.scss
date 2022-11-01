@@ -1,4 +1,11 @@
-.text{
-    color: red;
-    margin-left:100px;
+@use '../../../../common/style.scss' as mixin;
+
+.containerBorder {
+  border-right-width: 0.8px;
+  border-right-color: #a6a6a6;
+
+  .text {
+    @include mixin.fontSubtitle2;
+    color: #a6a6a6;
+  }
 }

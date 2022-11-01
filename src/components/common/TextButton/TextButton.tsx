@@ -12,10 +12,11 @@ import btnStyle from './TextButton.module.scss';
 
 interface TextButtonProps extends TouchableOpacityProps {
   title: string;
-  textStyle?: StyleProp<TextProps>;
+  isBorder?: boolean;
+  containerClass?: string;
 }
 
-const TextButton = ({ onPress, title, textStyle, ...props }: TextButtonProps) => {
+const TextButton = ({ onPress, title, containerClass, isBorder = false, ...props }: TextButtonProps) => {
   const _onPress = useCallback((event: GestureResponderEvent) => {
     if (onPress) {
       onPress(event);
@@ -23,8 +24,10 @@ const TextButton = ({ onPress, title, textStyle, ...props }: TextButtonProps) =>
   }, []);
 
   return (
-    <TouchableOpacity onPress={_onPress} {...props}>
-      <Text className={btnStyle.text}>{title}</Text>
+    <TouchableOpacity onPress={_onPress} className={`${isBorder ? btnStyle.containerBorder : ''} ${containerClass}`}>
+      <Text className={btnStyle.text} {...props}>
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 };
