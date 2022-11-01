@@ -1,3 +1,4 @@
+import Footer from '../../components/molecules/Footer/Footer';
 import * as React from 'react';
 import {Button, Text, TextInput, View} from 'react-native';
 import {Props} from '../../../Paths';
@@ -22,6 +23,8 @@ const Login = ({navigation}: LoginProps) => {
         />
         <TextButton title="회원가입" className={styles.signupBtn} />
       </View>
+
+      <Footer />
     </View>
   );
 };
