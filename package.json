@@ -12,6 +12,7 @@
   "dependencies": {
     "node-sass": "^7.0.3",
     "react": "18.1.0",
+    "react-hook-form": "^7.39.1",
     "react-native": "0.70.2",
     "react-native-sass-transformer": "^2.0.0",
     "sass": "^1.55.0"

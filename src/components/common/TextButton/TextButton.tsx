@@ -1,30 +1,27 @@
 import * as React from 'react';
+
 import { useCallback } from 'react';
-import {
-  TouchableOpacityProps,
-  TextProps,
-  GestureResponderEvent,
-  TouchableOpacity,
-  Text,
-  StyleProp,
-} from 'react-native';
+import { TouchableOpacityProps, TouchableOpacity, Text } from 'react-native';
 import btnStyle from './TextButton.module.scss';
 
 interface TextButtonProps extends TouchableOpacityProps {
   title: string;
-  textStyle?: StyleProp<TextProps>;
+  isBorder?: boolean;
+  containerClass?: string;
 }
 
-const TextButton = ({ onPress, title, textStyle, ...props }: TextButtonProps) => {
-  const _onPress = useCallback((event: GestureResponderEvent) => {
+const TextButton = ({ onPress, title, containerClass, isBorder = false, className, ...props }: TextButtonProps) => {
+  const _onPress = useCallback(event => {
     if (onPress) {
       onPress(event);
     }
   }, []);
 
   return (
-    <TouchableOpacity onPress={_onPress} {...props}>
-      <Text className={btnStyle.text}>{title}</Text>
+    <TouchableOpacity onPress={_onPress} className={`${isBorder ? btnStyle.containerBorder : ''} ${containerClass}`}>
+      <Text className={`${btnStyle.text} ${className}`} {...props}>
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 };

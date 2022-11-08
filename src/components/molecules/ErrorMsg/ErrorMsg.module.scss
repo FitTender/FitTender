@@ -1,0 +1,8 @@
+@use '../../../../common/style.scss' as mixin;
+
+.validate {
+  @include mixin.fontBody2;
+  color: #ff2b0e;
+  text-align: right;
+  padding-top: 0px;
+}

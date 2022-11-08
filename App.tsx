@@ -9,23 +9,39 @@
  */
 
 import * as React from 'react';
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { ScrollView, StyleSheet, useColorScheme } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
 import './App.css';
-import BackTitle from './src/components/common/BackTitle/BackTitle';
-import TextButton from './src/components/common/TextButton/TextButton';
+import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import paths from './Paths';
+
+export const Stack = createNativeStackNavigator();
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
+  const screenOptions: NativeStackNavigationOptions = {
+    header(props) {
+      const { route } = props;
+
+      if (route.name === 'Login') {
+        return <></>;
+      }
+      return <></>; // custom header 컴포넌트 넣을 위치
+    },
+  };
+
   return (
-    <SafeAreaView>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <TextButton title={'hello'} />
-        <BackTitle />
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Group screenOptions={screenOptions}>
+          {paths.map(path => (
+            <Stack.Screen key={path.name} {...path} />
+          ))}
+        </Stack.Group>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
